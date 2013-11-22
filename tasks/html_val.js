@@ -122,14 +122,14 @@ module.exports = function(grunt) {
       });
 
       files.forEach(function (file) {
-        grunt.log.writeln('\nProcessing File: ' + (file.path + '').green + '\n');
+        grunt.verbose.writeln('\nProcessing File: ' + (file.path + '').green + '\n');
         warnings = 0;
         var parser = new htmlparser.Parser(handler);
         parser.parseComplete(file.src);
         if(warnings > 0) {
-          grunt.log.writeln('\n' + (warnings + '').red + ' warnings in ' + (file.path + '').bold);
+          grunt.log.writeln('\n' + (warnings + '').red + ' warnings in ' + (file.path + '').bold + '\n');
         } else {
-          grunt.log.writeln('✓'.green + ' no warnings ' + (file.path + '').bold);
+          grunt.verbose.ok('✓'.green + ' no warnings ' + (file.path + '').bold);
         }
       });
       // grunt.file.write(f.dest, src);
