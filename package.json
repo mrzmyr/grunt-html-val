@@ -1,0 +1,47 @@
+{
+  "name": "grunt-html-val",
+  "description": "Validate HTML5 the simple way",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mrzmyr/grunt-html-val",
+  "author": {
+    "name": "Moritz Meyer",
+    "email": "m0ritz.m3yer@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mrzmyr/grunt-html-val.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrzmyr/grunt-html-val/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mrzmyr/grunt-html-val/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "validation",
+    "html",
+    "grunt"
+  ],
+  "dependencies": {
+    "colors": "~0.6.2",
+    "htmlparser": "~1.7.6"
+  }
+}
