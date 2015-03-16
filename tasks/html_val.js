@@ -17,7 +17,7 @@ module.exports = function(grunt) {
   var UNNESSARY_SCRIPT_ATTR = ['language', 'type'];
 
   grunt.registerMultiTask('html_val', 'Validate HTML5 the simple way.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
+
     var options = this.options({
       imageAlt: true,
       imageWidth: true,
@@ -50,54 +50,60 @@ module.exports = function(grunt) {
 
       var warnings;
 
+      function logMessage(message, additionalInfo) {
+        additionalInfo = additionalInfo.replace(/(\r\n|\n|\r)/gm,"");
+
+        grunt.log.writeln('x '.red, message, additionalInfo.grey);
+      }
+
       var parseNode = function (node) {
 
         if(node.name === 'img') {
           if(options.imageAlt && node.attribs.alt === undefined) {
             warnings++;
-            grunt.log.writeln('› '.red + 'alt attribute missing – image with src "' + node.attribs.src + '"');
+            logMessage('alt attribute missing', 'image with src "' + node.attribs.src + '"');
           }
 
           if(options.imageWidth && node.attribs.width === undefined) {
             warnings++;
-            grunt.log.writeln('› '.red + 'width attribute missing – image with src "' + node.attribs.src + '"');
+            logMessage('width attribute missing', 'image with src "' + node.attribs.src + '"');
           }
 
           if(options.imageHeight && node.attribs.height === undefined) {
             warnings++;
-            grunt.log.writeln('› '.red + 'height attribute missing – image with src "' + node.attribs.src + '"');
+            logMessage('height attribute missing', 'image with src "' + node.attribs.src + '"');
           }
         }
 
         if(options.anchorTitle && node.name === 'a' && (!node.attribs || node.attribs.title === undefined)) {
           warnings++;
-          grunt.log.writeln('› '.red + 'missing title attribute – element: "' + node.data + '"');
+          logMessage('missing title attribute', 'element: "' + node.data + '"');
         }
 
         if(options.singleQuotes && node.raw.indexOf('class=\'') !== -1) {
           warnings++;
-          grunt.log.writeln('› '.red + 'single quotes used – element: "' + node.data + '"');
+          logMessage('single quotes used', 'element: "' + node.data + '"');
         }
 
         if(options.scriptUnessaryAttr && node.name === 'script') {
           UNNESSARY_SCRIPT_ATTR.forEach(function (attr) {
             if(node.attribs && node.attribs[attr]) {
               warnings++;
-              grunt.log.writeln('› '.red + 'unnessary attribute used – attribute: ' + attr + '="' + node.attribs[attr] + '" element: "' + node.data + '"');
+              logMessage('unnessary attribute used', 'attribute: ' + attr + '="' + node.attribs[attr] + '" element: "' + node.data + '"');
             }
           });
         }
 
         if(options.htmlLang && node.name === 'html' && (!node.attribs || node.attribs.lang === undefined)) {
           warnings++;
-          grunt.log.writeln('› '.red + 'lang missing on html tag – element: "' + node.data + '"');
+          logMessage('lang missing on html tag', 'element: "' + node.data + '"');
         }
 
         if(options.attrUppercase) {
           for(var attrKey in node.attribs) {
             if(HTML_ATTRIBUTES.indexOf(attrKey) !== -1) {
               warnings++;
-              grunt.log.writeln('› '.red + 'uppercase attribute used – attribute: ' + attrKey + ' element: "' + node.data + '"');
+              logMessage('uppercase attribute used', 'attribute: ' + attrKey + ' element: "' + node.data + '"');
             }
           }
         }
