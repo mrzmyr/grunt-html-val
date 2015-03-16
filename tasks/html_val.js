@@ -13,10 +13,7 @@ module.exports = function(grunt) {
   var htmlparser = require('htmlparser');
   var colors = require('colors');
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
-
-  var HTML_ATTRIBUTES = ['ACCEPT', 'ACCEPT-CHARSET', 'ACCESSKEY', 'ACTION', 'ALIGN', 'ALT', 'ASYNC', 'AUTOCOMPLETE', 'AUTOFOCUS', 'AUTOPLAY', 'BGCOLOR', 'BUFFERED', 'CHALLENGE', 'CHARSET', 'CHECKED', 'CITE', 'CLASS', 'CODE', 'CODEBASE', 'COLOR', 'COLS', 'COLSPAN', 'CONTENT', 'CONTENTEDITABLE', 'CONTEXTMENU', 'CONTROLS', 'COORDS', 'DATA', 'DATETIME', 'DEFAULT', 'DEFER', 'DIR', 'DIRNAME', 'DISABLED', 'DOWNLOAD', 'DRAGGABLE', 'DROPZONE', 'ENCTYPE', 'FOR', 'FORM', 'HEADERS', 'HEIGHT', 'HIDDEN', 'HIGH', 'HREF', 'HREFLANG', 'HTTP', 'ICON', 'ID', 'ISMAP', 'ITEMPROP', 'KEYTYPE', 'KIND', 'LABEL', 'LANG', 'LANGUAGE', 'LIST', 'LOOP', 'LOW', 'MANIFEST', 'MAX', 'MAXLENGTH', 'MEDIA', 'METHOD', 'MIN', 'MULTIPLE', 'NAME', 'NOVALIDATE', 'OPEN', 'OPTIMUM', 'PATTERN', 'PING', 'PLACEHOLDER', 'POSTER', 'PRELOAD', 'PUBDATE', 'RADIOGROUP', 'READONLY', 'REL', 'REQUIRED', 'REVERSED', 'ROWS', 'ROWSPAN', 'SANDBOX', 'SPELLCHECK', 'SCOPE', 'SCOPED', 'SEAMLESS', 'SELECTED', 'SHAPE', 'SIZE', 'SIZES', 'SPAN', 'SRC', 'SRCDOC', 'SRCLANG', 'START', 'STEP', 'STYLE', 'SUMMARY', 'TABINDEX', 'TARGET', 'TITLE', 'TYPE', 'USEMAP', 'VALUE', 'WIDTH', 'WRAP']
+  var HTML_ATTRIBUTES = ['ACCEPT', 'ACCEPT-CHARSET', 'ACCESSKEY', 'ACTION', 'ALIGN', 'ALT', 'ASYNC', 'AUTOCOMPLETE', 'AUTOFOCUS', 'AUTOPLAY', 'BGCOLOR', 'BUFFERED', 'CHALLENGE', 'CHARSET', 'CHECKED', 'CITE', 'CLASS', 'CODE', 'CODEBASE', 'COLOR', 'COLS', 'COLSPAN', 'CONTENT', 'CONTENTEDITABLE', 'CONTEXTMENU', 'CONTROLS', 'COORDS', 'DATA', 'DATETIME', 'DEFAULT', 'DEFER', 'DIR', 'DIRNAME', 'DISABLED', 'DOWNLOAD', 'DRAGGABLE', 'DROPZONE', 'ENCTYPE', 'FOR', 'FORM', 'HEADERS', 'HEIGHT', 'HIDDEN', 'HIGH', 'HREF', 'HREFLANG', 'HTTP', 'ICON', 'ID', 'ISMAP', 'ITEMPROP', 'KEYTYPE', 'KIND', 'LABEL', 'LANG', 'LANGUAGE', 'LIST', 'LOOP', 'LOW', 'MANIFEST', 'MAX', 'MAXLENGTH', 'MEDIA', 'METHOD', 'MIN', 'MULTIPLE', 'NAME', 'NOVALIDATE', 'OPEN', 'OPTIMUM', 'PATTERN', 'PING', 'PLACEHOLDER', 'POSTER', 'PRELOAD', 'PUBDATE', 'RADIOGROUP', 'READONLY', 'REL', 'REQUIRED', 'REVERSED', 'ROWS', 'ROWSPAN', 'SANDBOX', 'SPELLCHECK', 'SCOPE', 'SCOPED', 'SEAMLESS', 'SELECTED', 'SHAPE', 'SIZE', 'SIZES', 'SPAN', 'SRC', 'SRCDOC', 'SRCLANG', 'START', 'STEP', 'STYLE', 'SUMMARY', 'TABINDEX', 'TARGET', 'TITLE', 'TYPE', 'USEMAP', 'VALUE', 'WIDTH', 'WRAP'];
   var UNNESSARY_SCRIPT_ATTR = ['language', 'type'];
 
   grunt.registerMultiTask('html_val', 'Validate HTML5 the simple way.', function() {
@@ -128,12 +125,8 @@ module.exports = function(grunt) {
         parser.parseComplete(file.src);
         if(warnings > 0) {
           grunt.log.writeln('\n' + (warnings + '').red + ' warnings in ' + (file.path + '').bold + '\n');
-        } else {
-          grunt.verbose.ok('✓'.green + ' no warnings ' + (file.path + '').bold);
         }
       });
-      // grunt.file.write(f.dest, src);
-
     });
   });
 

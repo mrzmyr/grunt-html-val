@@ -17,7 +17,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/mrzmyr/grunt-html-val/blob/master/LICENSE-MIT"
+      "url": "https://github.com/mrzmyr/grunt-html-val/blob/master/LICENSE"
     }
   ],
   "main": "Gruntfile.js",
