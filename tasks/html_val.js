@@ -51,7 +51,9 @@ module.exports = function(grunt) {
       var warnings;
 
       function logMessage(message, additionalInfo) {
-        additionalInfo = additionalInfo.replace(/(\r\n|\n|\r)/gm,"");
+        additionalInfo = additionalInfo
+          .replace(/(\r\n|\n|\r)/gm,"")
+          .replace(/ +(?= )/g,'');
 
         grunt.log.writeln('x '.red, message, additionalInfo.grey);
       }
